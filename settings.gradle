@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeStudy"
 include ':app'
 include ':resumepractice'
+include ':dicepractice'
