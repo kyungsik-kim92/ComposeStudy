@@ -4,11 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,7 +42,11 @@ fun Card() {
         mutableStateOf(true)
     }
 
-    val animationDegree by animateFloatAsState(targetValue = if (cardFront) 0f else 180f)
+    val animationDegree by animateFloatAsState(
+        targetValue = if (cardFront) 0f else 180f,
+        animationSpec = tween(500)
+    )
+
     Box(
         Modifier
             .fillMaxSize()
@@ -51,9 +57,30 @@ fun Card() {
             .clickable {
                 cardFront = !cardFront
 
-            }
-            .background(Color.Gray))
+            }){
+        if (animationDegree<= 90){
+            FrontCard()
+        }else {
+            BackCard()
+        }
+    }
+//            .background(Color.Gray))
 
+
+}
+
+
+@Composable
+fun FrontCard() {
+    Box(modifier = Modifier.fillMaxSize()
+        .background(Color(0xffffd700), shape = RoundedCornerShape(30.dp)))
+
+}
+
+@Composable
+fun BackCard() {
+    Box(modifier = Modifier.fillMaxSize()
+        .background(Color.Black, shape = RoundedCornerShape(30.dp)))
 
 }
 
