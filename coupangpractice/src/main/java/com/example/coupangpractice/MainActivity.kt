@@ -3,6 +3,7 @@ package com.example.coupangpractice
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,10 +31,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.coupangpractice.ui.theme.ComposeStudyTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.google.accompanist.pager.rememberPagerState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +64,7 @@ fun CoupangEx(){
         Column() {
             TopLogoArea()
             TopSearchBarArea()
+            TopBanner()
         }
 
     }
@@ -130,6 +137,53 @@ fun TopSearchBarArea() {
     }
 
 }
+
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun TopBanner(){
+
+    val pageState = rememberPagerState()
+    val pageCount = 5
+
+    val textList = listOf(
+        "광고 문구1",
+        "광고 문구2",
+        "광고 문구3",
+        "광고 문구4",
+        "광고 문구5"
+    )
+
+    Box(
+        modifier = Modifier.padding(top = 20.dp)
+    ) {
+
+        HorizontalPager(
+            count = pageCount,
+            state = pageState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .background(Color.Gray)
+        ) {page ->
+            Text(
+                text = textList[page],
+                fontSize = 30.sp,
+                fontWeight = FontWeight.ExtraBold
+            )
+        }
+
+        HorizontalPagerIndicator(
+            pagerState = pageState,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(15.dp)
+        )
+
+    }
+
+}
+
 
 @Preview(showBackground = true)
 @Composable
