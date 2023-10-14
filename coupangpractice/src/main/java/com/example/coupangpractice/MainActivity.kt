@@ -74,6 +74,7 @@ fun CoupangEx(){
             TopSearchBarArea()
             TopBanner()
             CategoryList()
+            CenterBannerArea()
         }
 
     }
@@ -248,6 +249,26 @@ fun CategoryList(){
 
 
     }
+}
+@Composable
+fun CenterBannerArea(){
+
+    Box(modifier = Modifier
+        .fillMaxWidth()
+        .height(500.dp)
+        .padding(20.dp)
+        .background(Color.LightGray),
+        contentAlignment = Alignment.Center
+    ) {
+
+        Text(
+            text = "배너영역",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold
+        )
+
+    }
+
 }
 
 
