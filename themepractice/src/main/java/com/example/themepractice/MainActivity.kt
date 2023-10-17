@@ -7,10 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,134 +30,64 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeStudyTheme() {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    RadiusTest2()
-                }
-
+            ComposeStudyTheme {
+                MyBoxTest()
             }
         }
     }
 
 
     @Composable
-    fun RadiusTest1() {
+    fun MyBoxTest() {
+
+        // fillMaxWidth
+        // height
+        // background
+        // clip
+        // padding
 
         Column() {
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(200.dp)
+                    .background(Color.Green)
+                    .clip(RoundedCornerShape(30.dp))
                     .padding(20.dp)
-                    .clip(MaterialTheme.shapes.extraLarge)
-                    .background(Color.Red)
             ) {
-
+                Text(text = "test")
             }
+
+            Spacer(modifier = Modifier.padding(20.dp))
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(200.dp)
+                    .clip(RoundedCornerShape(30.dp))
+                    .background(Color.Green)
                     .padding(20.dp)
-                    .clip(MaterialTheme.shapes.large)
-                    .background(Color.Red)
             ) {
-
+                Text(text = "test")
             }
+
+            Spacer(modifier = Modifier.padding(20.dp))
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(200.dp)
                     .padding(20.dp)
-                    .clip(MaterialTheme.shapes.medium)
-                    .background(Color.Red)
+                    .clip(RoundedCornerShape(30.dp))
+                    .background(Color.Green)
+
             ) {
-
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(20.dp)
-                    .clip(MaterialTheme.shapes.small)
-                    .background(Color.Red)
-            ) {
-
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(20.dp)
-                    .clip(MaterialTheme.shapes.extraSmall)
-                    .background(Color.Red)
-            ) {
-
+                Text(text = "test")
             }
 
         }
 
-    }
-
-    @Composable
-    fun RadiusTest2() {
-
-        Column() {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(20.dp)
-                    .clip(MaterialTheme.shapes.extraLarge)
-                    .background(Color.Blue)
-            ) {
-
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(20.dp)
-                    .clip(MaterialTheme.shapes.large)
-                    .background(Color.Blue)
-            ) {
-
-            }
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp)
-                    .padding(20.dp)
-                    .clip(MaterialTheme.shapes.medium)
-                    .background(Color.Blue)
-            ) {
-
-            }
-
-
-        }
-
-    }
-
-
-    @Preview(showBackground = true)
-    @Composable
-    fun TestPreview1() {
-        ComposeStudyTheme() {
-            RadiusTest2()
-        }
 
     }
 }
-
