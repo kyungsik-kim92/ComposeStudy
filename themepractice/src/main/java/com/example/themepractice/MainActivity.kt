@@ -1,10 +1,12 @@
 package com.example.themepractice
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,63 +34,37 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeStudyTheme {
-                MyBoxTest()
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
             }
         }
     }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+
+val context = LocalContext.current
 
 
-    @Composable
-    fun MyBoxTest() {
-
-        // fillMaxWidth
-        // height
-        // background
-        // clip
-        // padding
-
-        Column() {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .background(Color.Green)
-                    .clip(RoundedCornerShape(30.dp))
-                    .padding(20.dp)
-            ) {
-                Text(text = "test")
-            }
-
-            Spacer(modifier = Modifier.padding(20.dp))
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .clip(RoundedCornerShape(30.dp))
-                    .background(Color.Green)
-                    .padding(20.dp)
-            ) {
-                Text(text = "test")
-            }
-
-            Spacer(modifier = Modifier.padding(20.dp))
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(20.dp)
-                    .clip(RoundedCornerShape(30.dp))
-                    .background(Color.Green)
-
-            ) {
-                Text(text = "test")
-            }
-
+    Text(color = Color.Blue,
+        text = "Hello $name!",
+        modifier = modifier.clickable{
+            val intent = Intent(context,SampleActivity::class.java)
+            context.startActivity(intent)
         }
+    )
+}
 
-
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    ComposeStudyTheme {
+        Greeting("Android")
     }
 }
