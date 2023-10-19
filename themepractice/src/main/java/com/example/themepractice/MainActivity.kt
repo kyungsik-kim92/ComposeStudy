@@ -3,6 +3,7 @@ package com.example.themepractice
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.example.themepractice.ui.theme.ComposeStudyTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,16 +51,31 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
-val context = LocalContext.current
+
+Column {
+    Text(text = "여기는 compose1", fontSize = 40.sp)
 
 
-    Text(color = Color.Blue,
-        text = "Hello $name!",
-        modifier = modifier.clickable{
-            val intent = Intent(context,SampleActivity::class.java)
-            context.startActivity(intent)
-        }
-    )
+    AndroidView(factory = { context ->
+        val view = LayoutInflater.from(context).inflate(R.layout.temp_xml,null,false)
+
+        view
+    })
+
+
+
+
+
+
+
+    Text(text = "여기는 compose2", fontSize = 40.sp)
+
+}
+
+
+
+
+
 }
 
 @Preview(showBackground = true)
