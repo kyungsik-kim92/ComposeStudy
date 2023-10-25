@@ -10,7 +10,6 @@
         android:theme="@style/Theme.ComposeStudy">
         <activity
             android:name=".SampleActivity"
-            android:theme="@style/Theme.AppCompat.Light"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

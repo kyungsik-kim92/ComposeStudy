@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
             ComposeStudyTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+
                 ) {
                     Greeting("Android")
                 }
@@ -101,6 +101,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 )
+        Text(text = "Hello $name!")
         }
 
 
@@ -108,7 +109,6 @@ class MainActivity : ComponentActivity() {
 
 
 
-        Text(text = "Hello $name!")
     }
 
 
